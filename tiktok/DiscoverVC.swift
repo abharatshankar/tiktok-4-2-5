@@ -22,6 +22,7 @@ class DiscoverVC: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         super.viewDidLoad()
 
         
+
         TrendingTV.delegate = self
         TrendingTV.dataSource = self
         // Do any additional setup after loading the view.

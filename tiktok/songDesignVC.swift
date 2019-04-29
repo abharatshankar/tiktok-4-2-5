@@ -9,13 +9,14 @@
 import UIKit
 
 
-class songDesignVC: UIViewController,FSPagerViewDelegate,FSPagerViewDataSource {
+class songDesignVC: UIViewController,FSPagerViewDelegate,FSPagerViewDataSource , UITableViewDataSource , UITableViewDelegate {
 
     
-    @IBOutlet weak var useSoundBtn: UIButton!
+    @IBOutlet weak var heightAnchor: NSLayoutConstraint!
     
-    @IBOutlet weak var tryAnotherBtn: UIButton!
+    @IBOutlet weak var myScroll: UIScrollView!
     
+    @IBOutlet weak var songsTV: UITableView!
     
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
@@ -27,14 +28,25 @@ class songDesignVC: UIViewController,FSPagerViewDelegate,FSPagerViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tryAnotherBtn.layer.borderColor = UIColor.white.cgColor
-        self.tryAnotherBtn.layer.borderWidth = 1
+        songsTV.estimatedRowHeight = 227
+        songsTV.rowHeight = UITableView.automaticDimension
         
         self.pagerView.automaticSlidingInterval = 3.0 - self.pagerView.automaticSlidingInterval
         
         
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+         let numberOfRows = 10
+        let heightOfCell = 227
+        self.songsTV.frame = CGRect(x: 0, y: 366, width: 375, height: numberOfRows * heightOfCell)
+        
+        self.heightAnchor.constant = CGFloat(numberOfRows * heightOfCell  + 20)
+        
+        self.myScroll.updateContentView()
+    }
     
     
 
@@ -49,6 +61,7 @@ class songDesignVC: UIViewController,FSPagerViewDelegate,FSPagerViewDataSource {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         cell.imageView?.image = UIImage(named: "dummyImg.jpg"/*self.imageNames[index]*/)
         cell.imageView?.contentMode = .scaleAspectFill
+        
         cell.imageView?.clipsToBounds = true
         cell.textLabel?.text = index.description+index.description
         return cell
@@ -69,6 +82,24 @@ class songDesignVC: UIViewController,FSPagerViewDelegate,FSPagerViewDataSource {
         //self.pageControl.currentPage = pagerView.currentIndex
     }
     
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 10
+    }
     
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "songsSectionTableViewCell", for: indexPath)  as! songsSectionTableViewCell
+        cell.selectionStyle = .none
+        
+        cell.titleLbl.text = "Testing title"
+        
+        cell.backView.backgroundColor = UIColor.white
+        
+        shadowView(view: cell.backView)
+        
+        
+        return cell
+    }
     
 }
+
