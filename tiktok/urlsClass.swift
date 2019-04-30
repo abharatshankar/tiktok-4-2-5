@@ -56,3 +56,5 @@ let USER_SEARCH_API = "http://testingmadesimple.org/training_app/api/Service/use
 let SONG_SEARCH_API = "http://testingmadesimple.org/training_app/api/Service/songSearch"
 
 let VIDEO_PLAYER_PAUSE = "videoPlayerShouldPause"
+
+let SONGS_API = "http://testingmadesimple.org/training_app/api/service/songCategoryList"

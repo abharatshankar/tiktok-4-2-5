@@ -122,6 +122,7 @@
 		6B8EB15B2276DD98005BB47F /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EB1532276DD98005BB47F /* FSPagerCollectionView.swift */; };
 		6B8EB15F227708E8005BB47F /* songsSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EB15E227708E8005BB47F /* songsSectionCollectionViewCell.swift */; };
 		6B8EB1612277090F005BB47F /* songsSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EB1602277090F005BB47F /* songsSectionTableViewCell.swift */; };
+		6B8EB16322772719005BB47F /* songsCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EB16222772719005BB47F /* songsCatTableViewCell.swift */; };
 		6BA486E1222E3D4800E5AD9D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA486E0222E3D4800E5AD9D /* AVFoundation.framework */; };
 		6BA486E7222E451C00E5AD9D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA486E6222E451C00E5AD9D /* Player.swift */; };
 		6BC79E9F2227FB29009EEA9E /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BC79E9E2227FB29009EEA9E /* credentials.plist */; };
@@ -278,6 +279,7 @@
 		6B8EB1532276DD98005BB47F /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
 		6B8EB15E227708E8005BB47F /* songsSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songsSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B8EB1602277090F005BB47F /* songsSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songsSectionTableViewCell.swift; sourceTree = "<group>"; };
+		6B8EB16222772719005BB47F /* songsCatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songsCatTableViewCell.swift; sourceTree = "<group>"; };
 		6BA486E0222E3D4800E5AD9D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6BA486E6222E451C00E5AD9D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		6BC79E9E2227FB29009EEA9E /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				6B8EB1482276BF7C005BB47F /* songDesignCollectionViewCell.swift */,
 				6B8EB15E227708E8005BB47F /* songsSectionCollectionViewCell.swift */,
 				6B8EB1602277090F005BB47F /* songsSectionTableViewCell.swift */,
+				6B8EB16222772719005BB47F /* songsCatTableViewCell.swift */,
 				6B182EA22249FED80061B5A9 /* loader.gif */,
 				6B13845C2265A1BD00BBDF01 /* dummyImg.jpg */,
 				6B8EB14A2276DD98005BB47F /* Sources */,
@@ -887,6 +890,7 @@
 				6B0EEC9B2240B00300515F93 /* urlsClass.swift in Sources */,
 				6B6FBC89222E84C00093D989 /* forgotPasswordViewController.swift in Sources */,
 				6B182E9B2248F33A0061B5A9 /* FrameRateCalculator.swift in Sources */,
+				6B8EB16322772719005BB47F /* songsCatTableViewCell.swift in Sources */,
 				6BEC0D1E22537660006A9D7F /* songSelectVC.swift in Sources */,
 				6B1C83E5221C17B6001E7166 /* profileVideosCollectionViewCell.swift in Sources */,
 				6B1C8426221E5D6B001E7166 /* otpViewController.swift in Sources */,

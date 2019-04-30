@@ -33,6 +33,26 @@ class songDesignVC: UIViewController,FSPagerViewDelegate,FSPagerViewDataSource ,
         
         self.pagerView.automaticSlidingInterval = 3.0 - self.pagerView.automaticSlidingInterval
         
+        if Reachability.isConnectedToNetwork() == true
+        {
+            if(DEFAULT_HELPER.getId().isEmpty != true){
+                if(DEFAULT_HELPER.getId() != ""){
+                    self.songsPostServiceCall(url: SONGS_API, videoId: "", myuserId: DEFAULT_HELPER.getId())
+                }
+               
+            }else if(DEFAULT_HELPER.getfbId().isEmpty != true){
+                if(DEFAULT_HELPER.getfbId() != ""){
+                    self.songsPostServiceCall(url: SONGS_API, videoId: "", myuserId: DEFAULT_HELPER.getfbId())
+                }
+                
+            }
+            
+        }
+        else
+        {
+            self.view.makeToast("Check your connection")
+        }
+        
         
     }
     
@@ -46,6 +66,12 @@ class songDesignVC: UIViewController,FSPagerViewDelegate,FSPagerViewDataSource ,
         self.heightAnchor.constant = CGFloat(numberOfRows * heightOfCell  + 20)
         
         self.myScroll.updateContentView()
+    }
+    
+    
+    
+    @IBAction func closeAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -88,18 +114,73 @@ class songDesignVC: UIViewController,FSPagerViewDelegate,FSPagerViewDataSource ,
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "songsSectionTableViewCell", for: indexPath)  as! songsSectionTableViewCell
-        cell.selectionStyle = .none
         
-        cell.titleLbl.text = "Testing title"
+        if(indexPath.row == 0){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "songsCatTableViewCell", for: indexPath)  as! songsCatTableViewCell
+            cell.selectionStyle = .none
+            
+            cell.titleLbl.tag = indexPath.row
+            
+            cell.catSelection.tag = indexPath.row
+            
+            shadowView(view: cell.backView)
+            
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "songsSectionTableViewCell", for: indexPath)  as! songsSectionTableViewCell
+            cell.selectionStyle = .none
+            
+            cell.titleLbl.text = "Testing title"
+            
+            cell.backView.backgroundColor = UIColor.white
+            cell.titleLbl.tag = indexPath.row
+            
+            //cell.catselection.tag = indexPath.row
+            
+            shadowView(view: cell.backView)
+            
+            
+            return cell
+        }
         
-        cell.backView.backgroundColor = UIColor.white
         
-        shadowView(view: cell.backView)
-        
-        
-        return cell
     }
     
+    // MARK:- Service call
+    //SONGS_API
+    
+    
+    func songsPostServiceCall(url : String , videoId : String , myuserId : String){
+        
+        
+        let request = NSMutableURLRequest(url: NSURL(string: url)! as URL)
+        request.httpMethod = "POST"
+        let postString = "userId=\(myuserId)&limit=\(0)&contentoffset\(10)"
+        print(postString)
+        request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            guard error == nil && data != nil else {                                                          // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            do {
+                if let responseJSON = try JSONSerialization.jsonObject(with: data!) as? [String:AnyObject]{
+                    print(responseJSON)
+                    
+                }
+            }
+            catch {
+                print("Error -> \(error)")
+            }
+            
+        }
+        
+        task.resume()
+        
+    }
 }
 
